@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title ET Game
+    link( href="/css/bootstrap/bootstrap.min.css", rel="stylesheet")
+
+  body
+    #content( style='margin: 10px')
+      #game-description
+        h3 You have discovered an extra terrestrial being!
+        div(style='text-align:center')
+          img#spaceship-image(src='/static/assets/guess_0.jpg' width='640')
+        p They can answer all your questions about the universe, if you can identify their secret word before their spaceship arrives to take them home.
+        p You can only guess one letter at a time, and the spaceship will arrive after ten incorrect guesses.
+      div(style='text-align: center')
+        ul#guessed-letters-list( class='list-inline' style="font-size:72px" )
+      div#win-msg(class="alert alert-success" role="alert") 
+        | You won! You can ask for the answer to anything.
+        a(href='#' class="alert-link play-again-link")  Click to play again.
+      div#lose-msg(class="alert alert-danger" role="alert" ) 
+        | Oh, too bad, the extra terrestial is gone to never return again.
+        a(href='#' class="alert-link play-again-link")  Well, unless you click to play again.
+        br
+        a(href='#' class="alert-link show-solution-link") Want to see the solution? 
+        span#solution
+      #letter-choices(style='text-align:center')
+        p 
+          | Guesses Left: 
+          span#guesses-left 0
+ 
+        #letters-btn-group(class='btn-group' role='group')
+          - for( var letterCode = 'A'.charCodeAt(); letterCode <= 'Z'.charCodeAt(); letterCode++ )
+            - var letter = String.fromCharCode( letterCode )
+            button(type='button' class="btn btn-secondary btn-sm letter-btn" data-letter=letter id='letter-btn-' + letter)= letter
+      
+    script(src="/js/bootstrap/bootstrap.min.js")
+    script(src="/js/superagent/superagent.js")
+    script  
+      include ../js/game-api.js
+
+
+
+
