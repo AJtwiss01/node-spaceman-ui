@@ -13,4 +13,4 @@ app.get('/spaceman', (req, res) => {
     res.render( 'index', {} )
 });
 
-app.listen(8080, () => console.log( "Spaceman UI listening on port 8080!"))
+app.listen(8081, () => console.log( "Spaceman UI listening on port 8080!"))
